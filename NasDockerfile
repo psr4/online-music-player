@@ -1,0 +1,12 @@
+FROM debian:11.6
+
+WORKDIR /service
+
+COPY . .
+VOLUME /service/music
+RUN  apt-get update \
+    && apt-get install -y libtagc0-dev
+
+EXPOSE 3000
+
+ENTRYPOINT ["./player"]
